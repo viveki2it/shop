@@ -1,0 +1,65 @@
+%html
+  %head
+    %title ShopOfMe - Easy Fashion Recommendations
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}
+  
+    = stylesheet_link_tag 'shopofme_backbone/shopofme_backbone', :media => 'all'
+
+    = analytics_init if Rails.env.production?
+    
+    :javascript
+      window.initial_source_items = #{render(template: "api/v1/recommendations/index.json.rabl")};
+      window.all_categories = #{@all_categories.to_json};
+    = javascript_include_tag 'shopofme_backbone/shopofme_backbone'
+    = csrf_meta_tags
+    - if @show_intro
+      :javascript
+        window.show_intro = true;
+    - else
+      :javascript
+        window.show_intro = false;
+    - if flash[:js]
+      :javascript
+        $(document).ready(function() {
+          #{flash[:js]}
+        });
+    - if @invite_code
+      :javascript
+        localStorage.setItem('pickseInviteCode', '#{@invite_code}');
+    - if @campaign_identifier
+      :javascript
+        localStorage.setItem('campaign', '#{@campaign_identifier}');
+
+    - if @the_user.identifier
+      :javascript
+        if (!localStorage.getItem('pickseUserIdent')) {
+          localStoreage.setItem('pickseUserIdent', '#{@identifier}');
+        };
+
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{'data-toggle'=>"collapse", 'data-target'=>".nav-collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+
+          %a.brand{:href=>"#"}
+            %img{:src=>"/assets/red_logo.png"}
+
+          %ul.nav
+            %li#navoption1
+              %a{:href=>"#"}
+            %li#navoption2.menu_rec
+              %a{:href=>"#",:id=>:rec_main_nav}
+                My Recommendations
+            %li#navoption2.menu_history
+              %a{:href=>"#history", :id=>:history_main_nav}
+                My History
+            %li#navoption2.menu_hot
+              %a{:href=>"#topitems",:id=>:hot_main_nav}
+                What's Hot
+    .container
+      .container-fluid
+        #main_wrap.row-fluid

@@ -1,0 +1,56 @@
+#lpv-horizontal1 {
+
+  margin-top: 50px;
+  margin-left: 70px;
+
+  .left {
+
+    h1 {
+      margin-bottom: 15px;
+      font-family: 'PT Serif Caption', serif;
+      font-size: 37px;
+      font-weight: 500;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+      font-family: 'PT Serif Caption', serif;
+      font-style: italic;
+      font-size: 30px;
+      color: #A1A1A1;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    #signup_or_download {
+      margin-top: 40px;
+
+      #signup_email {
+        width: 350px;
+      }
+
+      button.download a {
+        padding-left: 30px;
+        padding-right: 30px;
+      }
+
+      .btnben {
+
+      }
+    }
+  }
+
+  .right {
+    height: 400px;
+
+    .heroimage {
+      margin: 0;
+    }
+
+    img {
+
+    }
+  }
+}

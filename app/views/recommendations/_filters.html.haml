@@ -1,0 +1,16 @@
+.well.sidebar-nav#score_wrapper
+	%h1.ribbon
+		%img#sidebaricon{:src=>"/assets/filtericon.png"}
+		%strong.ribbon-content Filter
+
+	.form-actions
+		%label.control-label{:for=>'select01'} Gender
+		%form#filters
+			= radio_button "filter",'gender','Men'
+			Men 
+			= radio_button "filter",'gender','Women', :style => "margin-left:20px;" 
+			Women
+			%input#user_id{:type=>"hidden", :name=>"identifier", :value=>""}
+			%div#filter_dropdown
+				=render 'filter_dropdown'
+

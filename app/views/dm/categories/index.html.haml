@@ -1,0 +1,13 @@
+%h1 Category Mappings
+= form_tag dm_categories_path, method: :put do |f|
+  %table
+    %tr
+      %th Category
+      %th Master Category
+    - @categories.each do |cat|
+      %tr
+        %td
+          = cat.name
+        %td
+          = collection_select cat, :master_category, @mcs, :id, :name, selected: cat.master_category_id
+  = submit_tag 'Save All'

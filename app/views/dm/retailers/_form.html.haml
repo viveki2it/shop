@@ -1,0 +1,157 @@
+= simple_form_for [:dm, @retailer], remote: true, url: {action: :update} do |f|
+  = hidden_field_tag "_method", :put
+  %table{class: "admin", width: '100%'}
+    %tr
+      %th{width: '25%'}
+        Setting
+      %th
+        Normal
+      %th
+        Sale
+    %tr
+      %td
+        Test Items
+      %td 
+        = f.input :normal_item_url, as: :string
+      %td 
+        = f.input :sale_item_url, as: :string
+    %tr
+      %td
+        = f.input :name
+        = f.input :display_name
+        = f.input :domain
+        = f.input :enabled
+      %td
+      %td
+    %tr
+      %td
+        = f.input :index_based
+        = f.input :index
+        = f.input :param_based
+        = f.input :param_name
+        = f.input :url_based
+      %td
+        Identifier:
+        = @normal_item.identifier unless @normal_item.nil?
+      %td
+        Identifier:
+        = @sale_item.identifier unless @normal_item.nil?
+    %tr
+      %td
+        = f.input :use_affiliate_window
+        = f.input :affiliate_window_awinmid
+        = f.input :use_linkshare
+        = f.input :linkshare_offerid
+        = f.input :linkshare_tmpid
+    %tr
+      %td
+        = f.input :image_selector
+      %td
+        = image_tag @normal_item.image_path unless (@normal_item.nil? || @normal_item.image_path.nil?)
+      %td
+        = image_tag @sale_item.image_path unless (@sale_item.nil? || @sale_item.image_path.nil?)
+    %tr
+      %td
+        %h3 Normal Price
+        = f.input :normal_simple_price, inline_label: "Use Simple Price Selector?", label: false
+        = f.input :normal_simple_price_selector
+        = f.input :normal_composite_price, inline_label: "Use composite price selectors?", label:  false
+        = f.input :normal_composite_price_selectors
+        = f.input :normal_composite_price_indexes
+        = f.input :normal_remove_from_price
+      %td
+        Price:
+        = @normal_item.normal_price unless @normal_item.nil?
+      %td
+        Price:
+        = @sale_item.normal_price unless @sale_item.nil?
+
+    %tr
+      %td
+        %h3 Sale Price
+        = f.input :sale_simple_price, inline_label: "Use Simple Price Selector?", label: false
+        = f.input :sale_simple_price_selector
+        = f.input :sale_composite_price, inline_label: "Use composite price selectors?", label:  false
+        = f.input :sale_composite_price_selectors
+        = f.input :sale_composite_price_indexes
+      %td
+        Price:
+        = @normal_item.sale_price unless @normal_item.nil?
+      %td
+        Price:
+        = @sale_item.sale_price unless @sale_item.nil?
+
+    %tr
+      %td
+        %h3 Original Price when on sale
+        = f.input :sale_original_price, inline_label: "Look for an original price", label: false
+        = f.input :sale_original_price_simple_price, inline_label: "Use Simple Price Selector?", label: false
+        = f.input :sale_original_price_simple_price_selector
+        = f.input :sale_original_price_composite_price, inline_label: "Use composite price selectors?", label: false
+        = f.input :sale_original_price_composite_price_selectors
+        = f.input :sale_original_price_composite_price_indexes
+      %td
+        Price:
+        = @normal_item.sale_original_price unless @normal_item.nil?
+      %td
+        Price:
+        = @sale_item.sale_original_price unless @sale_item.nil?
+    %tr
+      %td
+      %td
+        Selected Price: £
+        = @normal_item.selected_price unless @normal_item.nil?
+      %td
+        Selected Price: £
+        = @sale_item.selected_price unless @sale_item.nil?
+        %br
+        Original Price: £
+        = @sale_item.sale_original_price unless @sale_item.nil?
+        %br
+        On Sale:
+        = @sale_item.on_sale unless @sale_item.nil?
+    %tr
+      %td
+        = f.input :category_selector, label: "Category selectors, separated by '|'"
+      %td
+        -@normal_item.categories.each do |cat|
+          = "#{cat} : #{(cat.master_category || 'unmapped')}"
+          %br
+      %td
+        -@sale_item.categories.each do |cat|
+          = "#{cat} : #{(cat.master_category || 'unmapped')}"
+          %br
+    %tr
+      %td
+        = f.input :always_female, inline_label: "Items are always female?", label: false
+        = f.input :always_male, inline_label: "Items are always male?", label: false
+      %td
+      %td
+    %tr
+      %td
+        Gender
+      %td
+        = @normal_item.gender
+      %td
+        = @sale_item.gender
+    %tr
+      %td
+        = f.submit "Save"
+        = f.submit "Preview", id: :preview_retailer
+      %td
+        Regular Item Status:
+        = @normal_item.enabled
+      %td
+        Sale Item Status: 
+        = @sale_item.enabled
+
+-##preview_one{style: "width: 100%;height:800px"}
+  -#= @normal_item.doc.to_s
+
+#shadow
+  %span.loading_text
+    %br
+    %br
+    %br
+    %br
+    Loading....

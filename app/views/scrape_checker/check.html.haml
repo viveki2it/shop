@@ -1,0 +1,45 @@
+%h1 Scrape Checker
+%p A simple tool to check what data is being extracted from item URL's
+%p Enter the domain in the box below and click check, the scraped information is displayed below
+
+= form_tag '/scrape_checker/check', :method => :get do |f|
+	= text_field_tag :url, params[:url]
+	= submit_tag :Check
+
+-if @item
+	- if @item.supported_domain
+		- if !@item.supported_domain.selector || @item.supported_domain.selector == ""
+			%p 
+				Warning, the supported domain
+				=@item.supported_domain.domain
+				does not have selector (image) specified, scraping will fail.
+	%p
+		Image:
+		- if @item.image_link && @item.image_link != ""
+			= image_tag @item.image_link
+		- else 
+			No Image Available
+	%p
+		Categories:
+		%br
+		- if @item.categories.empty?
+			No Category Data
+		- else 
+			- @item.categories.each do |cat|
+				= cat.name
+				%br
+
+	/ - if !@item.categories.empty?
+	/ 	%p
+	/ 		Master Categories:
+	/ 		%br
+	/ 		- @item.master_categories.each do |mc|
+	/ 			= master_category.name
+	/ 			%br
+
+	%p
+		- if @item.price.nil?
+			Price: Not Available
+		- else
+			Price: 
+			= @item.price.to_s

@@ -1,0 +1,7 @@
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: shopofme_production
+  pool: 5
+  username: shopofme_production
+  password: safdg87gdfsgsd8

@@ -1,0 +1,32 @@
+%h1 Items
+%table
+  %tr
+    %th
+      ID
+    %th
+      Cats
+    %th
+      Gender
+    %th
+      Image
+    %th
+      Price
+    %th
+  - @items.each do |item|
+    %tr
+      %td
+        = link_to item.id, item.url, target: "_blank"
+      %td
+        - item.categories.each do |cat|
+          = cat.name
+          = " : "
+          = cat.master_category.name unless cat.master_category.nil?
+          %br
+      %td
+        = item.gender
+      %td
+        = link_to item.url, target: "_blank" do
+          = image_tag(item.image_path, style: "width: 40px;") unless item.image_path.nil?
+      %td
+        = item.selected_price
+= paginate @items

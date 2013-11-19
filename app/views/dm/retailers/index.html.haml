@@ -1,0 +1,59 @@
+%h1 Retailers
+%table{width: '100%'}
+  %tr
+    %th
+      id
+    %th
+      name
+    %th
+      Item#
+    %th
+      Disabled#
+    %th
+      Enabled
+    %th
+      No Gender
+    %th
+      No Image
+    %th
+      No Price
+    %th
+      Actions
+  - @retailers.each do |retailer|
+    %tr
+      %td 
+        = retailer.id
+      %td
+        = retailer.name
+      %td
+        = retailer.full_items.count
+      %td
+        = retailer.full_items.where(enabled: false).count
+      %td
+        - if retailer.full_items.count != 0 
+          - pc_enabled = ((retailer.full_items.where('enabled = true').count.to_f / retailer.full_items.count)*100)
+          - if retailer.full_items.count >= 20 && pc_enabled < 90
+            - the_style = "font-weight:bold; color:red;"
+          - else
+            - the_style = ""
+          - if (retailer.full_items.where('enabled = true').count != 0)
+            %span{style: the_style}
+              = ('%.0f' % pc_enabled) unless (retailer.full_items.where('enabled = true').count == 0)
+              = '%'
+          - elsif retailer.full_items.count > 20
+            %span{style: "font-weight: bold; color:red"}
+              = "0 %"
+          - else
+            = "0 %"
+        - else
+          = " - "
+      %td
+        = link_to (retailer.full_items.where(gender: "").count), dm_retailer_full_items_path(retailer_id: retailer.id, type: :no_gender)
+      %td
+        = link_to (retailer.full_items.where(image_path: nil).count), dm_retailer_full_items_path(retailer_id: retailer.id, type: :no_image)
+      %td
+        = link_to (retailer.full_items.where(selected_price: nil).count), dm_retailer_full_items_path(retailer_id: retailer.id, type: :no_price)
+      %td
+        = link_to 'Edit', edit_dm_retailer_path(retailer.id)
+        = " | "
+        = link_to 'Delete', dm_retailer_path(retailer.id), method: :delete, confirm: "Are you sure you want to delete this retailer"

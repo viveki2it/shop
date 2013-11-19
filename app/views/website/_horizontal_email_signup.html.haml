@@ -1,0 +1,5 @@
+#signup_wrapper
+  = form_for @signup, remote: true, html: {class: 'signup_horizontal'} do |f|
+    = f.text_field :email, placeholder: "Enter your email address"
+    = f.hidden_field :invite_id
+    = f.submit 'Sign Up', class: 'btnben'

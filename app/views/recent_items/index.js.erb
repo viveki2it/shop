@@ -1,0 +1,13 @@
+<% if @history && !@history.empty? %>
+	$('#the_history_wrapper').html('<%= escape_javascript(render :partial => 'history_grid') %>');
+<% elsif @history && @history.empty? %>
+	$('#the_history_wrapper').html('<%= escape_javascript(render :partial => 'temporary_history') %>');
+<%else %>
+	$('#the_history_wrapper').html('<%= escape_javascript(render :partial => 'temporary_history') %>');
+<% end %>
+$('#bottomscript').html('<%= escape_javascript(render :partial => 'layouts/skimlinks_script') %>');
+if (window.first_history_page === false) {
+	_kmq.push(['record', 'Load History Page']);	
+} else {
+	window.first_history_page = false;
+};

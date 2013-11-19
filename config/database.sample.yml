@@ -1,0 +1,7 @@
+production:
+  adapter: postgresql
+  encoding: utf8
+  database: pickse
+  pool: 5
+  username: pickse
+  password: pickse12345

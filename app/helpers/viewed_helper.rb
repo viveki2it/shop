@@ -1,0 +1,2 @@
+module ViewedHelper
+end

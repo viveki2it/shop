@@ -1,0 +1,118 @@
+
+<!-- Top Content
+================================================== -->  
+
+    <div class="second_page_p top"> 
+      <div class="second_page_title">
+        <h1>Shopping online <strong class="h1strong">will never be the same</strong></h1>
+      </div>
+      <div class="strapline_page_title">
+        <h3>get your own personal in-browser shop</h3>
+      </div>
+    </div>
+    <div class="heroimage">
+      <img src="/assets/shopofmewebsite/mainimagehome_2.jpg">
+    </div>
+      <div class="third_page_title">
+        <div class="downloadbutton">
+         <% if @agent.name == :Chrome %>
+            <a href="https://chrome.google.com/webstore/detail/fdbndbhpboiobdllfphhljbfieaefmol" target="_blank">
+            <button class="download download-chrome">Download<p id="browser">FREE</strong></button>
+            </a>
+        <% elsif @agent.name == :Safari %>
+            <a href="/safari?invite_code=<%= (params[:invite_code] || nil) %>">
+            <button class="download download-safari">Download<p id="browser">FREE</strong></button>
+            </a>
+        <% end %> 
+        <div class="downloadsubtext">
+            Available for Google Chrome or Safari
+          </div>
+
+        </div>
+          
+      </div>
+      
+<!-- 3 boxes
+================================================== -->    
+    
+    <div class="threemainboxes">
+      <div class="span4 mainboxborder">
+      <h3 class="threeboxes">RECOMMENDATIONS</h3>
+        <h4 class="threeboxes">Tailored recommendations just for you</h4>
+        <p class="boxdescription">Shopofme recommends you new clothing and accessories based on what you like, what's popular at the moment and what you're already shopping for.</p>
+      </div>
+      <div class="span4 mainboxborder">
+      <h3 class="threeboxes">SHOPPING HISTORY</h3>
+      <h4 class="threeboxes">Rediscover items after you've viewed them</h4>
+        <p class="boxdescription">Window shopping will never be the same! Each item you view is saved in your personal history, never forget where you found something again.</p>
+      </div>
+      <div class="span4">
+      <h3 class="threeboxes">POPULAR ITEMS</h3>
+      <h4 class="threeboxes">Find things you've never seen before</h4>
+        <p class="boxdescription">You can see the most popular items from all ShopOfMe users to discover the latest trends. Stay ahead of the curve and find your perfect fit.</p>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    
+    <%= render 'website/social_share_buttons' %>
+<!-- How it works
+================================================== -->  
+
+  </div>
+  <div class="seperator">
+    <div class="second_page_title">
+        <h1>How <strong class="h1strong">ShopOfMe</strong> works</h1>
+      </div>
+      <div class="strapline_page_title">
+        <h3>the fastest, most accurate way to shop online</h3>
+      </div>
+    <div class="box_center">
+      <div class="howitworks">
+        <div class="step1image">
+          <img src="/assets/shopofmewebsite/how1.png">
+        </div>
+        <div class="step1text">
+          <h3 class="howitworkstitle">2 Click Installation</h3>
+          Download the ShopOfMe browser extension onto your PC or Mac. We currently support Chrome and Safari.
+          <p></p>Once installed, simply click on your ShopOfMe icon on your browser to visit your personalised shop.
+        </div>
+    <div class="clearfix"></div>    
+        <div class="step2text">
+          <h3 class="howitworkstitle">Your shopping fingerprint</h3>
+          ShopOfMe captures items of clothing you look at when shopping online. These items are stored in your personal shop history, which you can vists anytime to find items easily and effeciently.
+        </div>
+        <div class="step2image">
+          <img src="/assets/shopofmewebsite/how2.png">
+        </div>
+    <div class="clearfix"></div>      
+    <div class="step3image">
+          <img src="/assets/shopofmewebsite/how3.png">
+        </div>
+        <div class="step3text">
+          <h3 class="howitworkstitle">Compare with others</h3>
+          ShopOfMe compares your tastes with those of other users. This allows you to see frequently viewed items and discover popular items. Help it's accuracy by 'liking' and 'disliking' items.
+        </div>
+    <div class="clearfix"></div>    
+        <div class="step2text">
+          <h3 class="howitworkstitle">Get recommendations</h3>
+          The more you interact with ShopOfMe by visiting your favourite shops and rating what others are viewing, the more ShopOfMe learns about your specific tastes.
+        </div>
+        <div class="step2image">
+          <img src="/assets/shopofmewebsite/how4.png">
+        </div>
+      </div>
+      <div class="clearfix bottommargin"></div> 
+    </div>
+    <div class="getinvitenow">
+    <p id="getinvite">
+      <% if @agent.name == :Chrome %>
+            <a class="download-chrome" href="https://chrome.google.com/webstore/detail/fdbndbhpboiobdllfphhljbfieaefmol" target="_blank">
+            Download Now!
+            </a>
+        <% elsif @agent.name == :Safari %>
+            <a class="download-safari" href="/safari?invite_code=<%= (params[:invite_code] || nil) %>">
+            Download Now!
+            </a>
+        <% end %> 
+    </p>
+      </div>

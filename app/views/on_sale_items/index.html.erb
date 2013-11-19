@@ -1,0 +1,29 @@
+<div>
+  <%= paginate @on_sale_items %>
+</div>
+<% @on_sale_items.each do |on_sale_item| %>
+  <table width="80%" style="background: none;">
+    <tr>
+      <td width="50%"><%= image_tag(on_sale_item.full_item.image_path) %></td>
+      <td valign="top">
+        <table width="100%" cellpadding="10px;" cellspacing="10px;">
+          <tr>
+            <td><%= "Sale Price: £#{on_sale_item.full_item.sale_original_price}" %></td>
+          </tr>
+          <tr>
+            <td><%= "Original Price: £#{on_sale_item.full_item.selected_price}" %></td>
+          </tr>
+          <tr>
+            <td><%= "Retailer: #{on_sale_item.full_item.retailer.name}" %></td>
+          </tr>
+          <tr>
+            <td><%= "Went On Sale: #{time_ago_in_words(on_sale_item.created_at)}" %></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+<% end %>
+<div>
+  <%= paginate @on_sale_items %>
+</div>

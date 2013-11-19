@@ -1,0 +1,19 @@
+<% if @recommendations && !@recommendations.empty? %>
+	$('#the_recommendations_wrapper').append('<%= escape_javascript(render :partial => 'recommendations_grid_fluid' , :locals=>{:the_items => @recommendations}) %>');
+<% end %>
+
+pickse.recs.current = pickse.recs.current.concat(<%= @recommendations.collect {|i| i.id}.to_json %>);
+
+<% if @the_user %>
+	$('#score_wrapper').html('<%= escape_javascript(render :partial => 'score', :locals => {:the_user => @the_user}) %>');
+<% else %>
+	$('#score_wrapper').html('<%= escape_javascript(render :partial => 'score', :locals => {:the_user => @temp_user}) %>');
+<% end %>
+
+<% if params[:startup] == 'true' %>
+
+	$('#filter_dropdown').html('<%= escape_javascript(render :partial => 'filter_dropdown' , :locals=>{:filters => @filters}) %>'); 
+	pickse.recs.startup =false;
+<% end %>
+
+$('#bottomscript').html('<%= escape_javascript(render :partial => 'layouts/skimlinks_script') %>');

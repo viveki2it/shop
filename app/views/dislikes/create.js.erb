@@ -1,0 +1,3 @@
+<% if @the_user %>
+	$('#score_wrapper').html('<%= escape_javascript(render :partial => 'recommendations/score', :locals => {:the_user => @the_user}) %>');
+<% end %>

@@ -1,0 +1,37 @@
+.second_page_p.top
+  .second_page_title
+    %h1
+      = variant.heading1
+  .strapline_page_title
+    %h3
+      = variant.heading2
+.heroimage
+  #carousel.carousel
+    .carousel-inner
+      .item.active
+        %img{:alt => "Install ShopOfMe with 2 clicks", :src => "/assets/website/mainimagehome_1.jpg"}/
+      .item
+        %img{:alt => "Get instant recommendations", :src => "/assets/website/mainimagehome_2.jpg"}/
+      .item
+        %img{:alt => "Filter through over 60 shops", :src => "/assets/website/mainimagehome_3.jpg"}/
+    %a.carousel-control.left{"data-slide" => "prev", :href => "#carousel"} ‹
+    %a.carousel-control.right{"data-slide" => "next", :href => "#carousel"} ›
+.third_page_title
+  .wrapper.blockCenter.subscribe
+    - if @agent.name == :Safari || @agent.name == :Chrome
+      %button#download.download 
+        = download_link variant.download_button_text
+      .clear  
+    - else
+      Sign Up with an email address Here!!!!!!!
+/
+  3 boxes
+  \==================================================
+.threemainboxes
+  .span4.mainboxborder
+    = variant.box1.html_safe
+  .span4.mainboxborder
+    = variant.box2.html_safe
+  .span4
+    = variant.box3.html_safe
+.clearfix

@@ -1,0 +1,36 @@
+<h1 class="titles">History</h1>
+<div id="the_history_wrapper">
+	<% if @history %>
+		<%= render 'history_grid' %>
+	<% else %>
+		<script> 
+			$(document).ready(function() {
+				_kmq.push(['identify', localStorage.getItem('pickseUserIdent')]);
+				_kmq.push(['record', 'Visit History']);
+				window.first_history_page = true;
+				setTimeout(function() {
+					loadHistory(localStorage.getItem('pickseUserIdent'));
+				}, 0);
+
+				$('.history_outbound_link').livequery("click", function() {
+					_kmq.push(['record', 'Click through to retailers site from history']);
+				});
+
+			})
+			
+				
+			
+		</script>
+	<% end %>
+</div>
+
+<% content_for :rightnav do %>
+
+  <%= render :partial => 'history_description'%>
+  <%= render :partial => 'recommendations/privacy' %>
+
+<% end %> 
+
+<% content_for :topbar do %>
+	<%= render :partial => 'shared/mysiteheader' %>
+<% end %>

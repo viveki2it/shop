@@ -1,0 +1,1 @@
+somWebsite.setupRegistration=function(e){$("#ident").val(e),$(".ident").html(e)};

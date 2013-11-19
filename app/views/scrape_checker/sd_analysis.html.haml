@@ -1,0 +1,45 @@
+%h1 Breakdown of supported domains
+%p A tool to show which supported domains have image/ price/ category data working
+
+%table
+	%tr
+		%th
+			Domain
+		%th
+			Image
+		%th
+			Category
+		%th
+			Price
+		%th
+			Status
+
+	- @sd.each do |d|
+		- a = true
+		%tr
+			%td
+				= d.domain
+			%td	
+				- if d.selector
+					Yes
+				- else
+					No
+					- a = false
+			%td
+				- if d.category_selector
+					Yes
+				- else
+					No
+					- a = false
+			%td
+				- if d.use_simple_price_selector || d.use_composite_price_selector
+					Yes
+					- 
+				- else
+					No
+					- a = false
+			%td
+				- if a 
+					Good
+				- else 
+					Bad

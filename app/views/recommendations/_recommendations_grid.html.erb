@@ -1,0 +1,24 @@
+<% if the_items %>
+	<div class="row-fluid">
+	<% count = 0 %>
+	<% the_items.each do |rec| %>
+		<% if (count > 0) && (count % 4 == 0) %>
+			</div>
+			<div class="row-fluid">
+		<% end %>
+		    <div class="span3 recommended">
+				<div class="recommendeditemimage">
+		      		<a href="<%= rec.url %>" target="_blank">
+		      			<img class="recommendeditem" src="<%= image_link(rec) %>">
+		      		</a>
+		      	</div>
+		      	<p class="cnt">
+		      		<%= link_to "<img src='/assets/thumbsup_dark.png'/>".html_safe, user_item_likes_path(@the_user, rec), :method => :post, :class=>"btn small likelink"  %>
+		      		<%= link_to "<img src='/assets/thumbsdown_dark.png'>".html_safe, user_item_dislikes_path(@the_user, rec), :method => :post, :class=>"btn small likelink"  %>
+		      	</p>
+
+		    </div><!--/span-->
+		<% count = count + 1 %>
+	<% end %>
+	</div>
+<% end %>

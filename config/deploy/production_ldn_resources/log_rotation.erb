@@ -1,0 +1,21 @@
+/home/deploy/apps/<%= application %>/current/log/*.log {
+    daily
+    missingok
+    rotate 52
+    compress
+    delaycompress
+    notifempty
+    sharedscripts
+    endscript
+}
+
+/home/deploy/apps/<%= application %>/shared/log/*.log {
+    daily
+    missingok
+    rotate 52
+    compress
+    delaycompress
+    notifempty
+    sharedscripts
+    endscript
+}

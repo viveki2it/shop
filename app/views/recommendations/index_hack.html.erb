@@ -1,0 +1,54 @@
+<input type="hidden" id="the_user_id" value=""/>
+<h2>Recommendations</h2>
+<div id="the_recommendations_wrapper">
+	<% if @recommendations %>
+		<%= render :partial=>'recommendations_grid',:locals => {:the_items => @recommendations} %>
+	<% else %>
+		<script> 
+			setTimeout(function() {
+				$('#the_user_id').val(localStorage.getItem('pickseUserIdent'));
+				loadRecommendations(localStorage.getItem('pickseUserIdent'));
+				the_gender = $("input[name='item[gender]']:checked").val();
+				if (the_gender == undefined) {
+					the_gender = 'Women';
+				}
+				var killscroll = false; 
+				$(window).scroll(function(){ // IMPORTANT
+                if  ($(window).scrollTop()+200 >= ($(document).height() - ($(window).height()))){ // IMPORTANT 
+                	if (killscroll == false) {
+                		killscroll = true;
+                		$.get('<%= viewed_index_path + '.js' %>?gender='+the_gender, function() {
+                			killscroll = false;
+                		})
+                	}
+                }})
+
+			}, 1000);
+				
+			
+		</script>
+	<% end %>
+</div>
+
+<div id="other_people_are_viewing_wrapper">
+	<h2>Other People Are Viewing</h2>
+	<div id="other_people_are_viewing_items">
+		<% if @other_people_are_viewing %>
+			<%= render :partial=>'other_people_are_viewing_grid',:locals => {:the_items => @other_people_are_viewing, :image_only => true} %>
+		<% end %>
+	</div>
+</div>
+<div id="more_other_viewing_items">
+	<%= link_to "Show me More", viewed_index_path, :remote => :true, :id=>:more_items_link %>
+</div>
+
+
+<% content_for :rightnav do %>
+<div class="well sidebar-nav" id="score_wrapper">
+  <%= render :partial => 'score', :locals => {:the_user => @the_user} %>
+</div><!--/.well -->
+<div class="well sidebar-nav" id="filter_wrapper">
+<%= radio_button "item",'gender','Men' %> Men 
+<%= radio_button "item",'gender','Women',:checked=>true, :style => "margin-left:20px;" %> Women 
+</div>
+<% end %> 

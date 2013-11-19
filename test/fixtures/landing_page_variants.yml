@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  invite_id: 1
+  landing_page_layout_id: 1
+  heading1: MyText
+  heading2: MyText
+  description: MyText
+  download_button_text: MyString
+  hero_image: MyString
+  box1: MyText
+  box2: MyText
+  box3: MyText
+  show_trending: false
+  show_supported_shops: false
+
+two:
+  invite_id: 1
+  landing_page_layout_id: 1
+  heading1: MyText
+  heading2: MyText
+  description: MyText
+  download_button_text: MyString
+  hero_image: MyString
+  box1: MyText
+  box2: MyText
+  box3: MyText
+  show_trending: false
+  show_supported_shops: false

@@ -1,0 +1,64 @@
+#lpv-horizontal1
+  .span7.left
+    %h1
+      = variant.heading1
+    - if variant.heading2
+      %h2
+        = variant.heading2
+    - if variant.description
+      %p
+        = variant.description
+
+    #signup_or_download
+      - if @agent.name == :Safari || @agent.name == :Chrome
+        %button#download.download{"data-invite_code" => "#{params[:invite_code]}"}
+          = download_link variant.download_button_text
+        .clear  
+      - else
+        = render partial: 'website/horizontal_email_signup'
+
+  .span7.right
+    .heroimage
+      %img{:alt => "Install ShopOfMe with 2 clicks", :src => variant.hero_image}
+
+.clearfix
+
+- if variant.show_three_boxes
+  .threemainboxes
+    .span4.mainboxborder
+      = variant.box1.html_safe
+    .span4.mainboxborder
+      = variant.box2.html_safe
+    .span4
+      = variant.box3.html_safe
+
+
+
+/ .second_page_p.top
+/   .second_page_title
+/     %h1
+/       = variant.heading1
+/   .strapline_page_title
+/     %h3
+/       = variant.heading2
+/ .heroimage
+/   %img{:alt => "Install ShopOfMe with 2 clicks", :src => variant.hero_image}
+/ .third_page_title
+/   .wrapper.blockCenter.subscribe
+/     - if @agent.name == :Safari || @agent.name == :Chrome
+/       %button#download.download 
+/         = download_link variant.download_button_text
+/       .clear  
+/     - else
+/       = render partial: 'website/horizontal_email_signup'
+/ /
+/   3 boxes
+/   \==================================================
+/ .threemainboxes
+/   .span4.mainboxborder
+/     = variant.box1.html_safe
+/   .span4.mainboxborder
+/     = variant.box2.html_safe
+/   .span4
+/     = variant.box3.html_safe
+/ .clearfix

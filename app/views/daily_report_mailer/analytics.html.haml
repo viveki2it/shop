@@ -1,0 +1,41 @@
+%span{:style=>"font-family: Arial"}
+	%div{:style=>"width:600px; background-color:#028342;color:white;line-height:40px"}
+		%h1{:style=>"font-size:20px;margin-left:10px;font-weight:normal;"}
+			ShopOfMe Analytics For
+			= @date.to_s
+
+	%h2{:style=>"margin-left:10px"} Key Metrics (Today)
+	
+	%div{:style=>"width:450px;padding-left:30px;"}
+
+		%table{:class => "admin",:style=>"width:210px;"}
+			%tr{:style=>"text-align:left"}
+				%th Metric
+				%th Value
+			
+			%tr{:style=>"text-align:left"}
+				%td Active Installs
+				%td
+					=@ai.over_period ({:days => 1})
+			%tr{:style=>"text-align:left"}
+				%td Total Downloads
+				%td
+					=@td.over_period ({:days => 1})
+
+	%h2{:style=>"margin-left:10px"}
+		Invites (all time)
+
+	%div{:style=>"width:450px;padding-left:30px;"}
+		%table{:class => "admin",:style=>"width:500px"}
+			%tr{:style=>"text-align:left"}
+				%th Invite Code
+				%th Total Visits
+				%th Total Downloads
+			- @invite_codes.each_with_index do |code, i|
+				%tr{:style=>"text-align:left"}
+					%td 
+						=code
+					%td 
+						=@invite_scores[i]
+					%td
+						=@invite_downloads[i]

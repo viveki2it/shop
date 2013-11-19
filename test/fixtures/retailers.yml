@@ -1,0 +1,63 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  display_name: MyString
+  domain: MyString
+  enabled: false
+  index_based: false
+  index: 1
+  param_based: false
+  param_name: MyString
+  url_based: false
+  image_selector: MyString
+  colour_dropdown: false
+  colour_dropdown_selector: MyString
+  colour_link: false
+  colour_link_selector: MyString
+  normal_simple_price: false
+  normal_simple_price_selector: MyString
+  normal_composite_price: false
+  normal_composite_price_selector: MyString
+  normal_composite_price_indexes: MyString
+  normal_remove: MyString
+  sale_simple_price: false
+  sale_simple_price_selector: MyString
+  sale_composite_price: false
+  sale_composite_price_selector: MyString
+  sale_composite_price_indexes: MyString
+  sale_remove: MyString
+  category_selector: MyString
+  always_male: false
+  always_female: false
+
+two:
+  name: MyString
+  display_name: MyString
+  domain: MyString
+  enabled: false
+  index_based: false
+  index: 1
+  param_based: false
+  param_name: MyString
+  url_based: false
+  image_selector: MyString
+  colour_dropdown: false
+  colour_dropdown_selector: MyString
+  colour_link: false
+  colour_link_selector: MyString
+  normal_simple_price: false
+  normal_simple_price_selector: MyString
+  normal_composite_price: false
+  normal_composite_price_selector: MyString
+  normal_composite_price_indexes: MyString
+  normal_remove: MyString
+  sale_simple_price: false
+  sale_simple_price_selector: MyString
+  sale_composite_price: false
+  sale_composite_price_selector: MyString
+  sale_composite_price_indexes: MyString
+  sale_remove: MyString
+  category_selector: MyString
+  always_male: false
+  always_female: false

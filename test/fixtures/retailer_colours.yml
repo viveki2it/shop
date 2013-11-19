@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  retailer_id: 1
+  master_colour_id: 1
+
+two:
+  name: MyString
+  retailer_id: 1
+  master_colour_id: 1

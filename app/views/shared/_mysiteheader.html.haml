@@ -1,0 +1,20 @@
+%ul.nav
+	%li
+		%a{:href=>"/"}	Recommendations
+	%li
+		%a{:id=>"swatch-link", :href=>"/history"}
+			History
+
+%ul#installmenu.nav.pull-right
+	%li.dropdown
+		%a.dropdown-toggle{"data-toggle"=>"dropdown", :href=>"#"}
+			Install ShopOfMe
+			%b.caret
+		%ul.dropdown-menu
+			%li
+				%a{:target=>"_blank", :href=>"https://chrome.google.com/webstore/detail/fdbndbhpboiobdllfphhljbfieaefmol",:target=>'_blank'}
+					Google Chrome
+			%li.divider
+			%li
+				%a{:target=>"_blank", :href=>"/safari"}
+					Safari

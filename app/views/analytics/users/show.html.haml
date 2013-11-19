@@ -1,0 +1,35 @@
+%h1
+  user:
+  = @user.identifier
+
+%h2
+  Overview
+
+%p
+  Visits:
+  = @user.visits.count
+
+  %br/
+  Likes
+  = @user.recorded_likes.count
+
+  %br/
+  Recs
+  = @user.recs({},{reset_page: "true", count: 0}).count
+
+  %br/
+  Last Visit
+  = @user.last_active
+
+  %br/
+  = @user.last_started_extension
+  Last Started Extension
+
+  %br/
+  Last IP:
+  = @user.last_ip
+
+  %br/
+  Last IP Country:
+  = @user.location
+

@@ -1,0 +1,4 @@
+%h1 Choose the first letter
+%p
+  - @letters.each do |l|
+    = link_to "#{l}  ", "/dm/categories/#{l}"

@@ -1,0 +1,27 @@
+%h1
+  30 Day Leaderboard (Invite Codes)
+%table.analytics.small
+  %tr
+    %th
+      Invite Code
+    %th
+      Unique Visitors
+    %th
+      Download Button Clicks
+    %th
+      Unique Download Button Clicks
+    %th
+      Downloads
+
+  - @invites.each do |invite|
+    %tr
+      %td
+        = invite.code
+      %td
+        = invite.interactions.where(event_type: "visit").count
+      %td
+        = invite.download_button_clicks
+      %td
+        = invite.interactions.where(event_type: "click").count
+      %td
+        = invite.users.count

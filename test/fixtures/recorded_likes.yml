@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  item_id: 1
+  user_id: 1
+  source: MyString
+  timestamp: 2012-10-08
+
+two:
+  item_id: 1
+  user_id: 1
+  source: MyString
+  timestamp: 2012-10-08

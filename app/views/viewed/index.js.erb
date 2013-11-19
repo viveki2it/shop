@@ -1,0 +1,5 @@
+killscroll = false;
+<% if @other_people_are_viewing && !@other_people_are_viewing.empty? %>
+	$('#other_people_are_viewing_items').append('<%= escape_javascript(render :partial => 'recommendations/other_people_are_viewing_grid' , :locals=>{:the_items => @other_people_are_viewing}) %>');
+<% end %>
+$('#bottomscript').html('<%= escape_javascript(render :partial => 'layouts/skimlinks_script') %>');

@@ -1,0 +1,1 @@
+(function(){$("#preview_retailer").live("click",function(){return $("#shadow").show(),$("html, body").animate({scrollTop:0},"fast")}),$(document).ready(function(){return $("#shadow").css("height",$(document).height()).hide()})}).call(this);

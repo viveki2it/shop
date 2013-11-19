@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  retailer_id: 1
+  succesful_items: 1
+  enabled_items: 1
+  failed_items: 1
+  error_items: 1
+
+two:
+  retailer_id: 1
+  succesful_items: 1
+  enabled_items: 1
+  failed_items: 1
+  error_items: 1

@@ -1,0 +1,25 @@
+#main_wrap {
+  margin-top: 20px;
+}
+
+table.analytics {
+  background-color: transparent;
+  margin-top: 10px;
+
+  td {
+    text-align: center;
+  }
+}
+
+table.analytics.small {
+  width: 30%;
+}
+
+table.analytics.large {
+  width: 90%;
+  font-size: 12px;
+  
+  td {
+    border-right: 1px solid black;
+  }
+}

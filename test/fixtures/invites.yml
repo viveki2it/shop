@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyString
+  ambassador_id: 1
+  include_in_leaderboard: false
+
+two:
+  code: MyString
+  ambassador_id: 1
+  include_in_leaderboard: false

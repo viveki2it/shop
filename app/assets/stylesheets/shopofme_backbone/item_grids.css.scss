@@ -1,0 +1,221 @@
+// Place all the styles related to the recommendations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar a.brand {
+	text-decoration: none;
+}
+
+#the_recommendations_wrapper {
+	margin-top: 0;
+}
+
+.box_with_actions {
+	padding-bottom: 30px;
+}
+
+.recommendation_box {
+	float:left;
+	margin-bottom: 15px;
+	margin-right: 40px;
+	height: 200px;
+
+	img {
+		max-width: 200px;
+		height: 200px;
+	}
+
+	.left {
+		float: left;
+		margin-left: 5px;
+	}
+
+	.right {
+		float:right;
+		margin-right: 15px;
+	}
+
+	a.item_link {
+		text-decoration: none;
+	}
+
+	a.item_link:hover {
+		text-decoration: underline;
+	}
+}
+
+#inner_recommendations_wrapper {
+	min-height: 650px;
+}
+
+#other_people_are_viewing_wrapper {
+	width:100%;
+	float: left;
+
+	h2 {
+		margin-bottom: 15px;
+	}
+}
+
+#more_other_viewing_items {
+	width: 100%;
+	float: left;
+
+	a {
+		float: right;
+		text-decoration: none;
+		font-size: 18px; 
+		margin-right: 50px;
+		margin-bottom: 50px;
+	}
+}
+
+/* Begin direct extract from static designs */
+
+
+.new_recommended {
+
+	.recommended{
+
+ height: 360px;
+ margin-right: px;
+ margin-bottom: 30px;
+
+ width: 190px;
+ float: left;
+ clear:none;
+
+ }
+ 
+
+
+ img.recommendeditem{
+ margin:0 auto;
+ display:block;
+ width: 100%;
+ }
+  
+ .itemwhole{
+ -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+ }
+
+ .item_highlight {
+ 	padding: 4px;
+ }
+ 
+.itemimagetodescription{
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+-moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+margin-bottom: 1px;
+}
+ 
+ .iteminfo{
+margin: 0 5px;
+height: 45px;
+}
+
+.infoboxbottom{
+background: #EEE!important;
+-webkit-border-radius: 0 0 5px 5px;
+-moz-border-radius: 0 0 5px 5px;
+border-radius: 0 0 5px 5px;
+color: #CCC;
+display: relative;
+height: 63px;
+}
+
+.itembuttons{
+float: right;
+margin: 5px 5px 0 5px;
+}
+
+ .likedislike{
+
+ }
+ img#jumpouticon{
+margin-top: 5px;
+ }
+  
+ strong.ilikeit{
+ margin-left:5px;
+ font-size: 12px;
+ font-weight: 200;
+ }
+
+  a strong.ilikeit{
+ 	text-decoration: none;
+ 	color: black;
+ }
+ 
+ a, a:link, a:visited {
+color: black;
+text-decoration: none;
+}
+ 
+.likedbutton{
+border-right: 1px solid #d0d0d0!important;
+padding-right: 0px;
+	float:left;
+}
+
+.dislikebutton {
+	float:left;
+}
+
+.btn {
+	padding: 20px 10px 20px 6px;
+	line-height: 20px;
+color: #333;
+text-align: center;
+
+cursor: pointer;
+}
+
+#pinitcount {
+	display:none;
+}
+
+}
+
+.small_item_details {
+	margin-top: 4px;
+	margin-bottom:4px;
+
+	.small_item_text {
+		color: #8B8B8B;
+		font-size: 10px;
+		line-height: 14px;
+		margin-left: 4px;
+	}
+}
+
+.liked{
+	border: 3px solid #92cca6;
+}
+
+.disliked{
+	border: 3px solid #ff8d87;
+}
+
+.new_recommended {
+	height: 360px;
+	margin-right: 5px;
+	margin-bottom: 55px;
+	width: 218px;
+	float: left;
+	clear: none;
+}
+
+.new_recommended .btn {
+	padding: 20px 12px 20px 6px;
+	line-height: 20px;
+	color: #333 ;
+	text-align: center;
+	cursor: pointer;
+}

@@ -1,0 +1,60 @@
+%h1
+  30 Day Installs
+%table.analytics.large
+  %tr
+    %th
+      Identifier
+    %th
+      Tracking Identifier
+    %th
+      Email
+    %th
+      Created
+    %th
+      Location
+    %th
+      Invite Code
+    %th
+      Version
+  - @countries = {}
+  - @version = {}
+
+  - @real_installs.each do |install|
+    - @countries[install.location] = (@countries[install.location].nil? ? 1 : @countries[install.location] +1)
+    - @version[install.extension_version] = (@version[install.extension_version].nil? ? 1 : @version[install.extension_version] +1)
+    %tr
+      %td
+        = install.identifier
+      %td
+        = install.tracking_code
+      %td
+        = install.email
+      %td
+        = time_ago_in_words(install.created_at)
+        ago
+      %td
+        - if (loc = install.location)
+          = loc
+        - else
+          Unknown
+      %td
+        = install.invite ? install.invite.code : "None"
+      %td
+        = install.extension_version ? install.extension_version : "Unknown"
+%h2 General Stats
+.span3
+  %h3 By Country (last 30 days)
+  - @countries.sort_by{|k,v| v}.reverse.each do |key, value|
+    = "#{key} :: #{value}" 
+    %br
+.span3
+  %h3 By Version (last 30 days)
+  - @version.sort_by{|k,v| v}.reverse.each do |key, value|
+    = "#{key} :: #{value}" 
+    %br
+
+.span3
+  %h3 When were they created?
+  - @real_installs.all.group_by{ |u| u.created_at.beginning_of_month }.each do |key, value|
+    = "#{key.strftime("%B")} #{key.year} :: #{value.count}"
+    %br

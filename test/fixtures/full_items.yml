@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  retailer_id: 1
+  normal_price: 1.5
+  sale_price: 1.5
+  selected_price: 1.5
+  image_path: MyText
+  gender: MyString
+  identifier: MyText
+  link: MyText
+  enabled: false
+
+two:
+  retailer_id: 1
+  normal_price: 1.5
+  sale_price: 1.5
+  selected_price: 1.5
+  image_path: MyText
+  gender: MyString
+  identifier: MyText
+  link: MyText
+  enabled: false

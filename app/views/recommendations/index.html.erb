@@ -1,0 +1,70 @@
+<div id="the_recommendations_wrapper">
+	<% if !@the_user.id.nil? && @recommendations %>
+		<%= render :partial=>'recommendations_grid',:locals => {:the_items => @recommendations} %>
+	<% else %>
+		<script> 
+			$(document).ready(function() {
+				setTimeout(function() {
+				
+				// try and get the user_id from localstorage, if not then generate them a new one
+				// and flag that this is a new user for analytics
+				$('#user_id').val(localStorage.getItem('pickseUserIdent'));
+				if ($('#user_id').val() =='') {
+					localStorage.setItem('pickseUserIdent',pickse.user.genIdentifier());
+					$('#user_id').val(localStorage.getItem('pickseUserIdent'));
+					pickse.user.is_first_time = true;
+				} else {
+					pickse.user.is_first_time = false;
+				}
+
+				_kmq.push(['identify', localStorage.getItem('pickseUserIdent')]);
+				_kmq.push(['record', 'visited recommendations']);
+				
+				// if they have a gender selection stored then use it, otherwise default to
+				// women
+				var selectedGender = localStorage.getItem('selected_gender');
+				if (selectedGender) {
+					$(":radio[value=" + selectedGender + "]").click()
+				} else {
+					$(":radio[value=Women]").click()
+				}
+
+				pickse.recs.startup = false;
+				pickse.recs.initial_setup = false;
+
+				// set up infinite scrolling
+				var killscroll = false; 
+				$(window).scroll(function(){ // IMPORTANT
+                if  ($(window).scrollTop()+700 >= ($(document).height() - ($(window).height()))){ // IMPORTANT 
+                	if (killscroll == false) {
+                		killscroll = true;
+                		pickse.ajax.getWithFilters('<%= recommendations_path + '.js' %>',function() {
+                			_kmq.push(['record', 'Load infinite scroll page']);
+                			killscroll = false;
+                		});
+                	}
+                }})
+
+			}, 0);
+			});
+			
+				
+			
+		</script>
+	<% end %>
+</div>
+
+
+<% content_for :rightnav do %>
+
+  <%= render :partial => 'score', :locals => {:the_user => @the_user} %>
+  <div id="filters">
+  <%= render :partial => 'filters', :locals => {:filters => @filters} %>
+  </div>
+  <%= render :partial => 'privacy' %>
+
+<% end %> 
+
+<% content_for :topbar do %>
+	<%= render :partial => 'shared/mysiteheader' %>
+<% end %>

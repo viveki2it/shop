@@ -1,0 +1,19 @@
+<div data-role="page">
+
+	<div data-role="content" id="main_wrap">	
+		<%= link_to image_tag('', :id=>:main_image,:style=>"width:100%"), '', :target=>"_blank",:id=>:main_link %>
+	</div><!-- /content -->
+
+	<div data-role="footer" data-position="fixed" class="ui-bar">
+		<a id="like" onClick="mobile_item.like()" data-role="button" data-icon="check">Like</a>
+		<a onClick="mobile_item.dislike()" data-role="button" data-icon="delete">Dislike</a>
+		<a onClick="mobile_item.ignore()" data-role="button" data-icon="arrow-r">Ignore</a>
+	</div><!-- /footer -->
+
+</div><!-- /page -->
+
+<script>
+	mobile_item.user_identifier = '<%= @user.identifier %>';
+	mobile_item.load_next();
+	mobile_item.show();
+</script>

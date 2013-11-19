@@ -1,0 +1,2 @@
+module Dm::RetailersHelper
+end

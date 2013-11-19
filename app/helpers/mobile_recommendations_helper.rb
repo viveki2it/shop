@@ -1,0 +1,2 @@
+module MobileRecommendationsHelper
+end

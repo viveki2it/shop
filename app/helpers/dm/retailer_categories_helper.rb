@@ -1,0 +1,2 @@
+module Dm::RetailerCategoriesHelper
+end

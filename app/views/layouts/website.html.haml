@@ -1,0 +1,72 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    /%link{rel: "chrome-webstore-item", href:'https://chrome.google.com/webstore/detail/fdbndbhpboiobdllfphhljbfieaefmol'}
+    = '<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/fdbndbhpboiobdllfphhljbfieaefmol">'.html_safe
+    %title 
+      = @title || "Shop of Me alerts you when clothes you want go on sale"
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "Your personal online shopping assistant that learns about you", :name => "description"}/
+    %meta{:content => "Style Gauge", :name => "author"}/
+    %meta{:name => "p:domain_verify", :content => "9aa3d566ede00dfd6f34e3d94d3133d9"}
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
+    = analytics_init if Rails.env.production?
+
+    = javascript_include_tag 'website/website'
+    = stylesheet_link_tag 'website/website'
+    = yield :head_content
+
+    - if cookies[:km_identity]
+      :javascript
+        somWebsite.km.identifier = '#{@identifier}';
+
+    - if cookies[:invite_code]
+      :javascript
+        somWebsite.km.inviteCode = '#{cookies[:invite_code]}';
+
+    %link{:href => "http://fonts.googleapis.com/css?family=PT+Serif+Caption:400,400italic", :rel => "stylesheet", :type => "text/css"}
+  %body{"data-offset" => "50", "data-spy" => "scroll", "data-target" => ".subnav"}
+    /
+      Navbar
+      \==================================================
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.brand{:href => "/"}
+            %img{:alt => "ShopOfMe", :src => "/assets/website/logo.png"}/
+          -#%ul.nav
+            %li#navoption1
+              %a{:href => "/"} Home
+            %li#navoption1
+              %a{:href => "http://blog.shopofme.com"} Blog
+          / - if @agent.name == :Safari || @agent.name == :Chrome
+          /   .topdownloadbutton
+          /     %button#download.download 
+          /       = download_link "Download"
+    .container
+      = yield
+      
+      .footerseperator
+        .footerbottomnav
+          .span12.navbar.footerlinks
+            %ul.footerbottom
+              %li.footersociallink
+                %a{:href => "http://pinterest.com/shopofme", :target => "_blank"}
+                  %img{:src => "/assets/website/pinterest_icon.png"}/
+              %li.footersociallink
+                %a{:href => "http://facebook.com/shopofme", :target => "_blank"}
+                  %img{:src => "/assets/website/facebook_icon.png"}/
+              %li.footersociallink
+                %a{:href => "http://twitter.com/shopofme", :target => "_blank"}
+                  %img{:src => "/assets/website/twitter_icon.png"}/
+              %li.footertextlink
+                %a{:href => "mailto:hello@shopofme.com"} Contact
+              %li.footertextlink
+                %a{:href => "/pages/privacy"} Privacy Policy
+              %li.footertextlink
+                %a{:href => "/about"} For Bloggers
+
+        .clearfix
+        .copyright
+          ShopOfMe © 2012 Style Gauge All Rights Reserved
+      / /container

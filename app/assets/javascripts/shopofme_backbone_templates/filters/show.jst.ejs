@@ -1,0 +1,62 @@
+<div class="sidebarpadding">
+	<label class="sidebarlabel">Price</label>
+
+	<div style="float:left; width: 100%; height: 100px;">
+		<p>
+			Price range: <span id="amount" style="border:0; color:#f6931f; font-weight:bold;" />
+		</p>
+		<div id="slider3" class="sliderbar"></div>
+	</div>
+
+</div>
+
+<label class="sidebarlabel sidebarpadding">Gender</label>
+
+
+<div class="form-actions genderpadding">
+	<form id="filters">
+		
+<% 
+	var is_active_gender = "";
+	if (filter.get('gender') == "Men") {  %>
+    <input class="gender_filter" id="filter_gender_men" name="filter[gender]" type="radio" value="Men" checked>
+		Men
+		<input class="gender_filter" id="filter_gender_women" name="filter[gender]" style="margin-left:20px;" type="radio" value="Women">
+		Women
+	<% } else { %>
+		<input class="gender_filter" id="filter_gender_men" name="filter[gender]" type="radio" value="Men">
+		Men
+		<input class="gender_filter" id="filter_gender_women" name="filter[gender]" style="margin-left:20px;" type="radio" value="Women" value="1" checked>
+		Women
+
+	<% }; %> 
+	</form>
+</div>
+
+<label class="sidebarlabel sidebarpadding">Category</label>
+
+<div class="sidebarpadding">
+	<select class="category_filter">
+	    <option value="-1">All</option>
+<<<<<<< HEAD
+=======
+	    <%
+	    %>
+>>>>>>> master
+      <% filter.categories.each(function(category) { %>
+	    	<% 
+	    	var is_selected = "";
+	    	if (filter.get('category') == category.get('id')) { 
+	    		is_selected = "selected";
+	    	}
+	    	%>
+	    	<% if (!((category.get('only_show_to') == 'Women') && (filter.get('gender') == "Men" ))) { %>
+          <% if (filter.get('gender') == "Men" && category.get("male_name") !== null && category.get('male_name') != "" && category.get('male_name') !== undefined)  {  %>
+            <option value="<%= category.escape("id") %>" <%= is_selected %>><%= category.get("male_name") %></option>
+          <% } else if (category.escape("name") !== undefined && category.escape("name") != "") { %>
+            <option value="<%= category.escape("id") %>" <%= is_selected %>><%= category.escape("name") %></option>
+          <% }; %>
+        <% } %>
+	    <% }); %>
+	</select>
+</div>

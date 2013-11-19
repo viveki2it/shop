@@ -1,0 +1,33 @@
+%html
+  %head
+    %title ShopOfMe Internal Analytics
+  
+    = stylesheet_link_tag 'shopofme_backbone/shopofme_backbone', :media => 'all'
+    = stylesheet_link_tag 'analytics/analytics', :media => :all
+
+    = javascript_include_tag 'analytics/analytics'
+    = csrf_meta_tags
+
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{'data-toggle'=>"collapse", 'data-target'=>".nav-collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+
+          %a.brand{:href=>"#"}
+            %img{:src=>"/assets/red_logo.png"}
+
+          %ul.nav
+            %li#navoption1
+              %a{:href=>"#"}
+            %li#navoption2
+              = link_to "Invite Codes", analytics_invites_path
+            %li#navoption2
+              = link_to "Current Installs", analytics_real_installs_path
+    .container
+      .container-fluid
+        #main_wrap.row-fluid
+          = yield

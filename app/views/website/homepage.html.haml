@@ -1,0 +1,27 @@
+#landing_page.container-fluid
+  = render partial: "website/landing_page_variants/#{@variant.landing_page_layout.partial}", locals: {variant: @variant}
+  /
+    Trending Now
+    \==================================================
+  - if @variant.show_trending
+    .nowtrending
+      %h3#nowtrending
+        %span#centerboxes NOW TRENDING
+      .trendingitems
+        - @top_items.each do |item|
+          = render :partial => 'trending_item', :locals => { :the_item => item}
+  /
+    Supported Shops
+    \==================================================
+  - if @variant.show_supported_shops
+    %div{:style=>"clear:both"}
+    .supportedshops
+      %h3#supportedshops
+        %span#centerboxes SUPPORTED SHOPS
+      %img#supportedshops{:src => "/assets/website/supportedshops.jpg", :style => "aligncenter"}
+  /
+    Social share buttons
+    \==================================================
+  = render :partial => 'website/social_share_buttons'
+  %a{href: "https://plus.google.com/111626100987265260541", rel: "publisher"}
+/

@@ -1,0 +1,42 @@
+%span{:style=>"font-family: Arial"}
+  %div{:style=>"width:600px; background-color:#028342;color:white;line-height:40px"}
+    %h1{:style=>"font-size:20px;margin-left:10px;font-weight:normal;"}
+      ShopOfMe Data Integrity for
+      = @date.to_s
+
+  %h2{:style=>"margin-left:10px"} Overview
+  %div{:style=>"padding-left: 20px"}
+    %p
+      = "#{@retailers.count} Retailers"
+    %p
+      = "#{FullItem.all.count} Items in Total"
+    %p
+      = "#{FullItem.where(enabled: true).count} Enabled Items"
+    %p
+      = "#{'%.0f' % ((FullItem.where(enabled: true).count.to_f / FullItem.count) * 100)} % Enabled"
+
+  %h2{:style=>"margin-left:10px"} Breakdown
+  %div{:style=>"width:450px;padding-left:30px;"}
+
+    %table{:class => "admin",:style=>"width:610px;"}
+      %tr{:style=>"text-align:left"}
+        %th Retailer
+        %th #Items
+        %th #Disabled
+        %th #No Image
+        %th #No Gender
+        %th #No Price
+      - @retailers.each do |retailer|
+        %tr
+          %td
+            = retailer.name
+          %td
+            = retailer.full_items.count
+          %td 
+            = retailer.full_items.where(enabled: false).count
+          %td
+            = retailer.full_items.where(image_path: nil).count
+          %td
+            = retailer.full_items.where(gender: "").count
+          %td
+            = retailer.full_items.where(selected_price: nil).count

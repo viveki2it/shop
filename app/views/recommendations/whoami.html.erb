@@ -1,0 +1,13 @@
+<div id="infobox">
+
+</div>
+
+<script> 
+setTimeout(function() {
+	html = "<p>Your user id is: " + localStorage.getItem('pickseUserIdent')+ "</p>";
+	html += "<p>So your mobile link would be: m.pickse.com/" + localStorage.getItem('pickseUserIdent') + "</p>";
+	$("#infobox").html(html);
+
+}, 1000);
+				
+</script>

@@ -1,0 +1,2 @@
+module Dm::CategoriesHelper
+end

@@ -1,0 +1,56 @@
+= Shop Of Me Main Web App
+
+== Setting up a development environment
+
+=== Requirements
+
+* Postgres
+* Redis
+* Ruby 1.9.3
+
+=== Setting up
+
+After Cloning the the repository create a new local database which a user called ben with no password has access to
+
+Copy the seed SQL file (Ben can provide) to admin_scripts/current/sql
+
+Run ./admin_scripts/restore_dev_from_current.sh
+
+Make sure redis is running on its default port
+
+It's recommended you set up a new gemset just for shopofme. Then run bundler to get dependencies.
+
+bundle install
+
+Run rails server:
+
+rails s
+
+You should be good to go
+
+If this process fails e.g. because something is missing or a seed file is out of date, please email ben@shopofme.com
+
+=== Setting up on Windows
+
+At the moment development on windows is not supported. It's possible but not easy.
+
+== Development practices
+
+=== Git flow
+
+Workflow is managed with GitFlow which in brief means:
+
+* All development is done on the develop branch
+* Features are developed in branches named: feature/feature_name
+* Once a feature is complete, it's merged back into develop and the feature branch deleted
+* The only time anything is ever merged into master is in preparation for a production deploy
+
+For automating this process this tool is awesome: https://github.com/nvie/gitflow
+
+For more on the workflow: http://jeffkreeftmeijer.com/2010/why-arent-you-using-git-flow/
+
+All development should be done within a branch and generally branches should be pushed to github for review before being merged into develop.
+
+=== Testing
+
+At the moment we don't have tests.

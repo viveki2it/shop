@@ -1,0 +1,8 @@
+.span2
+	
+	%a{:href=> the_item.url, :target=>'_blank', "data-link"=> the_item.affiliate_link, :class=>:outbound_link}
+		%img{:src => the_item.image_path}
+	.trendingname 
+		=the_item.retailer.domain.gsub('www.','')
+	.trendingprice
+		= "#{number_to_currency(the_item.the_price, :unit => "&pound")}".html_safe unless the_item.selected_price == 0

@@ -1,0 +1,24 @@
+- if the_items
+	- the_items.each do |rec|
+		.new_recommended
+			.recommended
+				.itemwhole
+					.itemimagetodescription
+						%a.outbound_link{:href=>rec.url, :target=>"_blank"}
+							-begin
+								= image_tag image_link(rec), :class=> 'recommendeditem'
+							-rescue => msg  
+								-puts "image breakageness"
+					.infoboxbottom
+						.itembuttons
+							.faved
+								%a{:class=>"pin-it-button",:target=>'_blank' ,'count-layout'=>"none",:href=>"http://pinterest.com/pin/create/button/?url=" + CGI::escape(rec.url) + '&media=' + CGI::escape(image_link(rec))}
+									%img{:id=>'pinterest', :src=>'/assets/shopofmewebsite/pinterest.png'}
+							.jumpout
+								%a{:href=>rec.url, :target=>"_blank"}
+									%img{:id=> 'jumpouticon',:src=>'/assets/shopofmewebsite/zoom.png'}
+						.likedislike
+							=link_to user_item_likes_path(@the_user, rec), :method => :post, :class=>"btn small likedbutton likelink" do
+								=image_tag('/assets/shopofmewebsite/thumbsup_dark.png') + "<strong class='ilikeit'>I Like It!</strong>".html_safe
+							=link_to user_item_dislikes_path(@the_user, rec), :method => :post, :class=>"btn small dislikebutton likelink" do
+								=image_tag('/assets/shopofmewebsite/thumbsdown_dark.png')

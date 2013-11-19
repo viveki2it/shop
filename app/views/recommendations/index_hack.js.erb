@@ -1,0 +1,19 @@
+<% if @recommendations && !@recommendations.empty? %>
+	$('#the_recommendations_wrapper').html('<%= escape_javascript(render :partial => 'recommendations_grid' , :locals=>{:the_items => @recommendations}) %>');
+<% elsif @recommendations && @recommendations.empty? %>
+	$('#the_recommendations_wrapper').html('<%= escape_javascript(render :partial => 'temporary_recommendations') %>');
+<%else %>
+	$('#the_recommendations_wrapper').html('<%= escape_javascript(render :partial => 'temporary_recommendations') %>');
+<% end %>
+
+<% if @other_people_are_viewing && !@other_people_are_viewing.empty? %>
+	$('#other_people_are_viewing_items').append('<%= escape_javascript(render :partial => 'other_people_are_viewing_grid' , :locals=>{:the_items => @other_people_are_viewing}) %>');
+<% end %>
+
+<% if @the_user %>
+	$('#score_wrapper').html('<%= escape_javascript(render :partial => 'score', :locals => {:the_user => @the_user}) %>');
+<% else %>
+	$('#score_wrapper').html('<%= escape_javascript(render :partial => 'score', :locals => {:the_user => @temp_user}) %>');
+<% end %>
+
+$('#bottomscript').html('<%= escape_javascript(render :partial => 'layouts/skimlinks_script') %>');

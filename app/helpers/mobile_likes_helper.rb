@@ -1,0 +1,2 @@
+module MobileLikesHelper
+end

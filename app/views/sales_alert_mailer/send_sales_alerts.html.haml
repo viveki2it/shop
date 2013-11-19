@@ -1,0 +1,19 @@
+- @full_items.each do |full_item|
+  %table{:width => "80%", :style => "background: none;"}
+    %tr
+      %td{:width => "50%"}
+        = image_tag(full_item.image_path)
+      %td{:valign=>"top"}
+        %table{:width=>"100%", :cellpadding=>"10px;", :cellspacing=>"10px;"}
+          %tr
+            %td
+              = "Sale Price: £#{full_item.sale_original_price}"
+          %tr
+            %td
+              = "Original Price: £#{full_item.selected_price}"
+          %tr
+            %td
+              = "Retailer: #{full_item.retailer.name}"
+          %tr
+            %td
+              = "Went On Sale: #{time_ago_in_words(full_item.created_at)}"

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  doc: MyText
+  normal_price: 1.5
+  sale_price: 1.5
+  original_price: 1.5
+  enabled: false
+  valid_item: false
+
+two:
+  doc: MyText
+  normal_price: 1.5
+  sale_price: 1.5
+  original_price: 1.5
+  enabled: false
+  valid_item: false

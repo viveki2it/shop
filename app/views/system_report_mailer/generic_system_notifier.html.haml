@@ -1,0 +1,8 @@
+%span{:style=>"font-family: Arial"}
+	%div{:style=>"width:600px; background-color:#028342;color:white;line-height:40px"}
+		%h1{:style=>"font-size:20px;margin-left:10px;font-weight:normal;"}
+			System Notification Generated 
+			= Time.now
+	
+	%div{:style=>"width:450px;padding-left:30px;"}
+		= @message.html_safe

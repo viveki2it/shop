@@ -1,0 +1,29 @@
+
+#landing_page.container-fluid
+  #lpv-horizontal1
+    .span7.left
+      %h1
+        Complete your ShopOfMe registration
+      %p
+        To complete your ShopOfMe registration, enter you email address below
+      -#%p
+        your user ident is
+        %span.ident
+          loading...
+
+      #signup_or_download
+        #signup_wrapper
+          = form_tag create_registration_path , class: :signup_horizontal do 
+            = text_field_tag :email, '' ,style: "width: 350px;", placeholder: "Enter your email address"
+            = hidden_field_tag :ident, id: :ident
+            = submit_tag "Sign Up", class: :btnben
+            - if flash[:error]
+              %p.error
+                = flash[:error]
+
+    .span7.right
+      .heroimage
+        = image_tag 'website/discovery.jpg'
+
+- content_for :head_content do
+  = javascript_include_tag 'registration/registration'

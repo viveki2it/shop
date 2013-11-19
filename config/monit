@@ -1,0 +1,37 @@
+check process nginx with pidfile /usr/local/nginx/logs/nginx.pid
+  start program = "/etc/init.d/nginx start"
+  stop program  = "/etc/init.d/nginx stop"
+  if failed port 80 protocol HTTP request / then restart
+  if 5 restarts with 5 cycles then timeout
+
+check process resque_recs_0
+  with pidfile /home/deploy/apps/shopofme/current/tmp/pids/resque_recs_0.pid
+  start program = "/bin/su - deploy && /bin/bash -c 'cd /home/deploy/apps/shopofme/current/ && bundle exec rake environment resque:work RAILS_ENV=production QUEUE=recommendable PIDFILE=tmp/pids/resque_recs_0.pid INTERVAL=2 >> log/resque_recs_0.log'"
+  stop program = "/bin/sh -c 'cd /home/deploy/apps/shopofme/current && kill -s QUIT `cat tmp/pids/resque_recs_0.pid` && rm -f tmp/pids/resque_recs_0.pid; exit 0;'"
+  if totalmem is greater than 350 MB for 10 cycles then restart  # eating up memory?
+
+check process resque_scraper_0
+  with pidfile /home/deploy/apps/shopofme/current/tmp/pids/resque_scraper_0.pid
+  start program = "/bin/su - deploy && /bin/bash -c 'cd /home/deploy/apps/shopofme/current/ && bundle exec rake environment resque:work RAILS_ENV=production QUEUE=scraping PIDFILE=tmp/pids/resque_scraper_0.pid INTERVAL=2 >> log/resque_scraper_0.log'"
+  stop program = "/bin/sh -c 'cd /home/deploy/apps/shopofme/current && kill -s QUIT `cat tmp/pids/resque_scraper_0.pid` && rm -f tmp/pids/resque_scraper_0.pid; exit 0;'"
+  if totalmem is greater than 350 MB for 10 cycles then restart  # eating up memory?
+
+
+#Monitoring redis
+check process redis with pidfile /var/run/redis/redis.pid
+  group database
+  start program = "/etc/init.d/redis start"
+  stop program = "/etc/init.d/redis stop"
+
+check process postgresql with pidfile /var/run/postgresql/8.4-main.pid
+  group database
+  start program = "/etc/init.d/postgresql-8.4 start"
+  stop program = "/etc/init.d/postgresql-8.4 stop"
+
+#Monitoring ssh Service
+
+check process sshd with pidfile /var/run/sshd.pid
+  start program "/etc/init.d/ssh start"
+  stop program "/etc/init.d/ssh stop"
+  if failed port 22 protocol ssh then restart
+  if 5 restarts within 5 cycles then timeout
